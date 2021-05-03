@@ -1,6 +1,6 @@
 {
   "name": "typescript-promise-any",
-  "version": "2.1.0-alpha.2",
+  "version": "2.1.0-alpha.3",
   "description": "ES Proposal spec-compliant shim for Promise.any, ported to TypeScript",
   "contributors": [
     {
@@ -13,7 +13,7 @@
     "lib"
   ],
   "scripts": {
-    "prepublish": "safe-publish-latest && npm run build",
+    "prepare": "safe-publish-latest && npm run build",
     "build": "./node_modules/.bin/tsc -p tsconfig.prod.json && cpy --cwd=src --parents '**/*.d.ts' ../lib/",
     "lint": "eslint . --ext .ts",
     "postlint": "evalmd README.md",

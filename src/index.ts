@@ -1,6 +1,5 @@
 import "source-map-support/register";
 import callBind from "call-bind";
-import define from "define-properties";
 
 import AggregateError from "es-aggregate-error";
 import requirePromise from "./requirePromise";
@@ -28,11 +27,5 @@ const rebindable: Rebindable = function any<T>(
   return bound(typeof this === "undefined" ? Promise : this, iterable);
 } as Rebindable;
 
-define(rebindable, {
-  AggregateError: AggregateError,
-  getPolyfill: getPolyfill,
-  implementation: implementation,
-  shim: shim
-});
-
-export = rebindable;
+export { AggregateError, getPolyfill, implementation, shim };
+export default rebindable;
