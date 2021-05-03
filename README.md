@@ -13,36 +13,38 @@ ES Proposal spec-compliant shim for Promise.any. Invoke its "shim" method to shi
 This package implements the [es-shim API](https://github.com/es-shims/api) interface. It works in an ES3-supported environment that has `Promise` available globally, and complies with the [proposed spec](https://github.com/tc39/proposal-promise-any).
 
 Most common usage:
-```js
-var assert = require('assert');
-var any = require('promise.any');
 
-var resolved = Promise.resolve(42);
-var rejected = Promise.reject(-1);
-var alsoRejected = Promise.reject(Infinity);
+```TypeScript
+import assert from "assert";
+import any from "promise.any";
 
-any([resolved, rejected, alsoRejected]).then(function (result) {
+const resolved = Promise.resolve(42);
+const rejected = Promise.reject(-1);
+const alsoRejected = Promise.reject(Infinity);
+
+any([resolved, rejected, alsoRejected]).then(result => {
 	assert.equal(result, 42);
 });
 
-any([rejected, alsoRejected]).catch(function (error) {
+any([rejected, alsoRejected]).catch((error) => {
 	assert.ok(error instanceof AggregateError);
 	assert.deepEqual(error.errors, [-1, Infinity]);
 });
 
 any.shim(); // will be a no-op if not needed
 
-Promise.any([resolved, rejected, alsoRejected]).then(function (result) {
+Promise.any([resolved, rejected, alsoRejected]).then(result => {
 	assert.equal(result, 42);
 });
 
-Promise.any([rejected, alsoRejected]).catch(function (error) {
+Promise.any([rejected, alsoRejected]).catch(error => {
 	assert.ok(error instanceof AggregateError);
 	assert.deepEqual(error.errors, [-1, Infinity]);
 });
 ```
 
 ## Tests
+
 Simply clone the repo, `npm install`, and run `npm test`
 
 ## Pre-1.0 versions

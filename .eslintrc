@@ -1,27 +1,81 @@
 {
-	"root": true,
+  "root": true,
 
-	"extends": "@ljharb",
+  "ignorePatterns": ["lib", "node_modules"],
 
-	"globals": {
-		"Promise": false
-	},
+  "extends": [
+    "strictest/eslint",
+    "strictest/promise",
+    "strictest/typescript-eslint",
+    "strictest/unicorn",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
+  ],
 
-	"rules": {
-		"dot-notation": [2, { "allowKeywords": false }],
-		"new-cap": [2, { "capIsNewExceptions": ["GetIntrinsic", "PromiseResolve", "Type"] }],
-		"no-magic-numbers": 0,
-		"sort-keys": 0,
-	},
+  "env": {
+    "node": true
+  },
 
-	"overrides": [
-		{
-			"files": "test/**",
-			"rules": {
-				"max-lines-per-function": 0,
-				"max-params": 0,
-				"no-invalid-this": 0,
-			},
-		},
-	],
+  "globals": {
+    "Promise": false
+  },
+
+  "plugins": ["prettier", "unicorn", "promise", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.prod.json",
+    "tsconfigRootDir": "./"
+  },
+
+  "rules": {
+    "dot-notation": ["error", { "allowKeywords": false }],
+    "new-cap": ["error", { "capIsNewExceptions": ["GetIntrinsic", "PromiseResolve", "Type"] }],
+    "no-magic-numbers": "off",
+    "sort-keys": "off",
+    "prettier/prettier": "warn",
+    "no-constant-condition": "warn",
+    "no-console": "warn",
+    "no-dupe-else-if": "warn",
+    "consistent-return": "off", // TS handles this
+    "no-duplicate-imports": "off", // typescript-eslint handles this
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/no-duplicate-imports": "error",
+    "@typescript-eslint/no-implicit-any-catch": "error",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/require-await": "warn",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      { "accessibility": "no-public", "overrides": { "properties": "off" } }
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      { "allowConciseArrowFunctionExpressionsStartingWithVoid": true }
+    ],
+    "@typescript-eslint/consistent-type-definitions": ["warn", "interface"],
+    "@typescript-eslint/array-type": ["warn", { "default": "generic" }],
+    "@typescript-eslint/dot-notation": "off",
+    "@typescript-eslint/consistent-type-imports": "warn",
+    "unicorn/catch-error-name": ["warn", { "name": "error" }]
+  },
+
+  "overrides": [
+    {
+      "files": ["src/**/*.test.ts", "test/**/*.ts", "**/__mocks__/**/*.ts"],
+      "plugins": ["prettier", "@typescript-eslint"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.test.json",
+        "tsconfigRootDir": "."
+      },
+      "rules": {
+        "max-lines-per-function": "off",
+        "max-params": "off",
+        "no-invalid-this": "off",
+        "max-nested-callbacks": "off" // Unit tests involve a lot of nested callbacks
+      }
+    }
+  ]
 }
