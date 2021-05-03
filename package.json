@@ -1,14 +1,20 @@
 {
   "name": "typescript-promise-any",
-  "version": "2.1.0-alpha.1",
+  "version": "2.1.0-alpha.2",
   "description": "ES Proposal spec-compliant shim for Promise.any, ported to TypeScript",
+  "contributors": [
+    {
+      "name": "James Robinson",
+      "url": "https://github.com/AverageHelper"
+    }
+  ],
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "scripts": {
     "prepublish": "safe-publish-latest && npm run build",
-    "build": "./node_modules/.bin/tsc -p tsconfig.prod.json",
+    "build": "./node_modules/.bin/tsc -p tsconfig.prod.json && cpy --cwd=src --parents '**/*.d.ts' ../lib/",
     "lint": "eslint . --ext .ts",
     "postlint": "evalmd README.md",
     "pretest": "npm run lint && npm run build && cd lib es-shim-api --bound",
@@ -43,7 +49,10 @@
     "es-shim",
     "API"
   ],
-  "author": "AverageHelper",
+  "author": {
+    "name": "James Robinson",
+    "url": "https://github.com/AverageHelper"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AverageHelper/typescript-promise-any/issues"
@@ -56,7 +65,8 @@
     "es-abstract": "^1.18.0",
     "es-aggregate-error": "^1.0.5",
     "get-intrinsic": "^1.1.1",
-    "iterate-value": "^1.0.2"
+    "iterate-value": "^1.0.2",
+    "source-map-support": "^0.5.19"
   },
   "devDependencies": {
     "@es-shims/api": "^2.1.2",
@@ -67,10 +77,12 @@
     "@types/es6-shim": "^0.31.41",
     "@types/iterate-value": "^1.0.0",
     "@types/node": "^15.0.1",
+    "@types/source-map-support": "^0.5.3",
     "@types/tape": "^4.13.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "aud": "^1.1.2",
+    "cpy-cli": "^3.1.1",
     "es6-shim": "^0.35.5",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
