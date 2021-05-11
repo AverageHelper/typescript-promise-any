@@ -23,7 +23,8 @@ export = function any<T>(
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   const C = this as PromiseConstructorLike;
   if (Type(C) !== "Object") {
-    throw new TypeError("`this` value must be an object");
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+    return reject(C, new TypeError("`this` value must be an object")) as Promise<T>;
   }
   function thrower<U>(value: U): Promise<U> {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
@@ -42,6 +43,6 @@ export = function any<T>(
     })
     // eslint-disable-next-line promise/prefer-await-to-then
   ).then(errors => {
-    throw new AggregateError(errors, "Every promise rejected");
+    return reject(C, new AggregateError(errors, "Every promise rejected"));
   }, identity) as Promise<T>;
 };
