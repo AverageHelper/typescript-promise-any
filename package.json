@@ -1,6 +1,6 @@
 {
   "name": "typescript-promise-any",
-  "version": "2.1.0-alpha.3",
+  "version": "2.1.0-alpha.4",
   "description": "ES Proposal spec-compliant shim for Promise.any, ported to TypeScript",
   "contributors": [
     {
@@ -13,8 +13,8 @@
     "lib"
   ],
   "scripts": {
-    "prepare": "safe-publish-latest && npm run build",
-    "build": "./node_modules/.bin/tsc -p tsconfig.prod.json && cpy --cwd=src --parents '**/*.d.ts' ../lib/",
+    "prepare": "safe-publish-latest && rm -rf ./lib && npm run build",
+    "build": "./node_modules/.bin/tsc -p tsconfig.prod.json",
     "lint": "eslint . --ext .ts",
     "postlint": "evalmd README.md",
     "pretest": "npm run lint && npm run build && cd lib es-shim-api --bound",
@@ -59,6 +59,7 @@
   },
   "homepage": "https://github.com/AverageHelper/typescript-promise-any#readme",
   "dependencies": {
+    "@types/es-aggregate-error": "^1.0.0",
     "array.prototype.map": "^1.0.2",
     "call-bind": "^1.0.2",
     "define-properties": "^1.1.3",
