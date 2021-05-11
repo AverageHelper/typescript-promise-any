@@ -1,6 +1,6 @@
 {
   "name": "typescript-promise-any",
-  "version": "2.1.0-alpha.5",
+  "version": "2.1.0-alpha.6",
   "description": "ES Proposal spec-compliant shim for Promise.any, ported to TypeScript",
   "contributors": [
     {
