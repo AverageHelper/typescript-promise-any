@@ -1,6 +1,6 @@
-import requirePromise from "./requirePromise";
-import getPolyfill from "./polyfill";
-import define from "define-properties";
+import requirePromise = require("./requirePromise");
+import getPolyfill = require("./polyfill");
+import define = require("define-properties");
 
 export = function shimAny(): typeof Promise.any {
   requirePromise();

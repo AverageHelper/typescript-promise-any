@@ -1,4 +1,4 @@
-import test from "tape";
+import test = require("tape");
 import runTests from "./builtin";
 
 test("shimmed", t => {

@@ -1,5 +1,5 @@
-import requirePromise from "./requirePromise";
-import implementation from "./implementation";
+import requirePromise = require("./requirePromise");
+import implementation = require("./implementation");
 
 export = function getPolyfill(): typeof Promise.any {
   requirePromise();

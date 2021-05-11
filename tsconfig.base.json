@@ -18,10 +18,7 @@
     "noUncheckedIndexedAccess": true,
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "types": ["node"],
-    "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "forceConsistentCasingInFileNames": true
   }
 }

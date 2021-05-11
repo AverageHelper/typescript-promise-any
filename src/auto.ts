@@ -1,2 +1,2 @@
-import shim from "./shim";
+import shim = require("./shim");
 shim();

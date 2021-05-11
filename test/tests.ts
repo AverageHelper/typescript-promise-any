@@ -1,5 +1,5 @@
 import type { Test } from "tape";
-import AggregateError from "es-aggregate-error";
+import AggregateError = require("es-aggregate-error");
 
 function assertArray(
   t: Test,

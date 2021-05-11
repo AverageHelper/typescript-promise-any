@@ -1,9 +1,9 @@
 import type { Test } from "tape";
-import defineProperties from "define-properties";
+import defineProperties = require("define-properties");
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const isEnumerable = Object.prototype.propertyIsEnumerable;
 
-import checkFunctionsHaveNames from "functions-have-names";
+import checkFunctionsHaveNames = require("functions-have-names");
 const functionsHaveNames = checkFunctionsHaveNames();
 
 import runTests from "./tests";

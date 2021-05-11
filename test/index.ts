@@ -1,5 +1,5 @@
-import any from "../src";
-import test from "tape";
+import any = require("../src");
+import test = require("tape");
 import runTests from "./tests";
 
 test("as a function", t => {

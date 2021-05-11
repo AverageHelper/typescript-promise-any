@@ -1,12 +1,12 @@
 import "source-map-support/register";
-import callBind from "call-bind";
-import define from "define-properties";
+import callBind = require("call-bind");
+import define = require("define-properties");
 
-import AggregateError from "es-aggregate-error";
-import requirePromise from "./requirePromise";
-import implementation from "./implementation";
-import getPolyfill from "./polyfill";
-import shim from "./shim";
+import AggregateError = require("es-aggregate-error");
+import requirePromise = require("./requirePromise");
+import implementation = require("./implementation");
+import getPolyfill = require("./polyfill");
+import shim = require("./shim");
 
 requirePromise();
 const bound = callBind(getPolyfill());

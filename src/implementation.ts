@@ -1,13 +1,13 @@
-import requirePromise from "./requirePromise";
+import requirePromise = require("./requirePromise");
 requirePromise();
 
-import AggregateError from "es-aggregate-error";
-import PromiseResolve from "es-abstract/2018/PromiseResolve";
+import AggregateError = require("es-aggregate-error");
+import PromiseResolve = require("es-abstract/2018/PromiseResolve");
 import { Type } from "es-abstract";
-import callBind from "call-bind";
-import GetIntrinsic from "get-intrinsic";
-import iterate from "iterate-value";
-import map from "array.prototype.map";
+import callBind = require("call-bind");
+import GetIntrinsic = require("get-intrinsic");
+import iterate = require("iterate-value");
+import map = require("array.prototype.map");
 
 const all = callBind(GetIntrinsic("%Promise.all%"));
 const reject = callBind(GetIntrinsic("%Promise.reject%"));
