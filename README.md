@@ -1,3 +1,6 @@
+| :exclamation:  Don't use this. Use (promise.any)[https://www.npmjs.com/package/promise.any] and its associated (@types package)[https://www.npmjs.com/package/@types/promise.any] instead   |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 # promise.any <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
 [![Build Status][travis-svg]][travis-url]
